@@ -1132,6 +1132,11 @@ allow system_server surfaceflinger_exec:file r_file_perms;
 # Allow init to set sysprop used to compute stats about userspace reboot.
 set_prop(system_server, userspace_reboot_log_prop)
 
+# Pocket judge
+allow system_server pocket_service:service_manager { add find };
+allow system_server pocket_judge_sysfs:dir search;
+allow system_server pocket_judge_sysfs:file rw_file_perms;
+
 # JVMTI agent settings are only readable from the system server.
 neverallow {
   domain
